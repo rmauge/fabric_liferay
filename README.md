@@ -3,11 +3,11 @@ fabric_liferay
 
 A set of Fabric tasks to deploy a compressed Liferay bundle from a source location to a remote server
 I use Hudson as a CI server, but the tasks are general enough to be used with any server since it simply moves
-a tar.gz file via ssh.
+a tar.gz file via scp.
 
 
 ## Getting Started
-An ant task is used to call the Fabric script on the Hudson as the last step of the build but this can also
+An ant task is used to call the Fabric script on Hudson as the last step of the build but this can also
 be called from the command line (which the Ant script does essentially)
 
 
@@ -43,9 +43,9 @@ The high level steps are to take the server offline then deploy and put back onl
 A symlink is used to point to the new deploy "current" and the old deploy is saved to "previous"
 in case you need to roll-back.
 
-The core is the health check which uses an ssh tunnel to determine if the server is ready.
+The core is the health check which uses an HTTP request via an ssh tunnel to determine if the server is ready.
 The implementation of that check is left up to you. We have a status page that checks all essential components
-and displays an "UP" is they all pass. I am using a regex to check for that indicator.
+and displays an "UP" string if they all pass. I am using a regex to check for that indicator.
 
 
 It should be easy enough to apply this template to any application.
