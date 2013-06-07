@@ -45,7 +45,7 @@ in case you need to roll-back.
 
 The core is the health check which uses an ssh tunnel to determine if the server is ready.
 The implementation of that check is left up to you. We have a status page that checks all essential components
-and displays an "OK" is they all pass. I am using a regex to check for that indicator.
+and displays an "UP" is they all pass. I am using a regex to check for that indicator.
 
 
 It should be easy enough to apply this template to any application.
